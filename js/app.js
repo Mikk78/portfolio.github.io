@@ -11,10 +11,10 @@ Version      : 1.0
 
 (function() {
     // Page module - helps to manage all the pages and navigation
-    var Page = (function() {
+    const Page = (function() {
     	
     	
-    	var config = {
+    	let config = {
     			$bookBlock : $( '#bb-bookblock' ),
     			$navNext : $( '.bb-nav-next' ),
     			$navPrev : $( '.bb-nav-prev' ),
@@ -65,7 +65,7 @@ Version      : 1.0
     		},
     		initEvents = function() {
     			
-    			var $slides = config.$bookBlock.children();
+    			let $slides = config.$bookBlock.children();
 
     			// add navigation events
     			config.$navNext.on( 'click touchstart', function() {
@@ -101,7 +101,7 @@ Version      : 1.0
 
     			// add keyboard events
     			$( document ).keydown( function(e) {
-    				var keyCode = e.keyCode || e.which,
+    				let keyCode = e.keyCode || e.which,
     					arrow = {
     						left : 37,
     						up : 38,
@@ -123,7 +123,7 @@ Version      : 1.0
             //menu item
     		current = 0;
     		menuConfig.$menuItems.on( 'click', function() {
-    			var $el = $( this ),
+    			let $el = $( this ),
     				idx = $el.attr("data-page"),
     				reachedToPage = false;
     			config.$bookBlock.bookblock( 'jump',idx	 );
@@ -146,26 +146,26 @@ Version      : 1.0
     /**
      * Our application module - manages all the elements in all pages
      */
-    var UltraApp = (function() {
-        var htmlRef = $('html');
-        var windowRef = $(window);
-        var bodyRef = $('html, body');
-        var docRef = $(document);
-        var preloaderArea = $('.cover');
-        var headerArea = $('.header-top-area');
-        var smothScrollEls = $('a.smoth-scroll');
-        var workContainer = $('.work-inner');
-        var workPopup = $('.work-popup');
-        var testimonialList = $(".testimonial-list");
-        var navbarToggle = $(".navbar-collapse.in");
-        var gridContainers = $('.grid');
-        var portfolioFilter = $(".fil-cat");
-        var portfolioContainer = $(".lrs-projects");
-        var portfolioProject = $(".lrs-project");
+     let UltraApp = (function() {
+        let htmlRef = $('html');
+        let windowRef = $(window);
+        let bodyRef = $('html, body');
+        let docRef = $(document);
+        let preloaderArea = $('.cover');
+        let headerArea = $('.header-top-area');
+        let smothScrollEls = $('a.smoth-scroll');
+        let workContainer = $('.work-inner');
+        let workPopup = $('.work-popup');
+        let testimonialList = $(".testimonial-list");
+        let navbarToggle = $(".navbar-collapse.in");
+        let gridContainers = $('.grid');
+        let portfolioFilter = $(".fil-cat");
+        let portfolioContainer = $(".lrs-projects");
+        let portfolioProject = $(".lrs-project");
 
 
         //inits widgets
-        var initWidgets = function() {
+        let initWidgets = function() {
             //tooltip
             $('[data-toggle="tooltip"]').tooltip();
 
@@ -181,7 +181,7 @@ Version      : 1.0
         };
 
         //init porfolio
-        var initPortfolioGrid = function() {
+        let initPortfolioGrid = function() {
             //massonary - portfolio
             gridContainers.masonry({
                 // set itemSelector so .grid-sizer is not used in layout
@@ -192,7 +192,7 @@ Version      : 1.0
             });
 
             //activate filters
-            var selectedClass = "";
+            let selectedClass = "";
             portfolioFilter.on('click', function () {
                 portfolioFilter.removeClass('active');
                 $(this).addClass('active');
@@ -207,10 +207,10 @@ Version      : 1.0
         }
 
         //on document ready callback function
-        var onDocReady = function(e) {
+        let onDocReady = function(e) {
             //smooth scroll
             smothScrollEls.on("click", function (e) {
-                var anchor = $(this);
+                let anchor = $(this);
                 bodyRef.stop().animate({
                     scrollTop: $(anchor.attr('href')).offset().top - 50
                 }, 1000);
@@ -289,13 +289,13 @@ Version      : 1.0
         };
 
         //on window load call back function
-        var onWinLoad = function(e) {
+        let onWinLoad = function(e) {
             // preloader - handling
             preloaderArea.delay(1000).fadeOut(2000);
         };
 
         //on window scroll call back function
-        var onWinScroll = function(e) {
+        let onWinScroll = function(e) {
             //header
             if (windowRef.scrollTop() > 200) {
                 headerArea.addClass('menu-bg');
@@ -305,14 +305,14 @@ Version      : 1.0
         };
 
         //binds the events to required elements
-        var bindEvents = function() {
+        let bindEvents = function() {
             docRef.on('ready', onDocReady);
             windowRef.on('load', onWinLoad);
             windowRef.on('scroll', onWinScroll);
         };
 
         // init - initilizes various widgets, elements, events, etc
-        var init = function() {
+        let init = function() {
             bindEvents();
             //init page app
             Page.init();

@@ -13,14 +13,14 @@
 	'use strict';
 
 	// global
-	var $window = $(window),
+	const $window = $(window),
 		Modernizr = window.Modernizr;
 
 	// https://gist.github.com/edankwan/4389601
 	Modernizr.addTest('csstransformspreserve3d', function () {
-		var prop = Modernizr.prefixed('transformStyle');
-		var val = 'preserve-3d';
-		var computedStyle;
+		let prop = Modernizr.prefixed('transformStyle');
+		let val = 'preserve-3d';
+		let computedStyle;
 		if(!prop) return false;
 
 		prop = prop.replace(/([A-Z])/g, function(str,m1){ return '-' + m1.toLowerCase(); }).replace(/^ms-/,'-ms-');
@@ -44,7 +44,7 @@
 	* This saved you an hour of work? 
 	* Send me music http://www.amazon.co.uk/wishlist/HNTU0468LQON
 	*/
-	var $event = $.event,
+	let $event = $.event,
 	$special,
 	resizeTimeout;
 
@@ -57,7 +57,7 @@
 		},
 		handler: function( event, execAsap ) {
 			// Save the context
-			var context = this,
+			let context = this,
 				args = arguments,
 				dispatch = function() {
 					// set correct event type
@@ -145,7 +145,7 @@
 			// get width of this.$el
 			// this will be necessary to create the flipping layout
 			this.elWidth = this.$el.width();
-			var transEndEventNames = {
+			let transEndEventNames = {
 				'WebkitTransition': 'webkitTransitionEnd',
 				'MozTransition': 'transitionend',
 				'OTransition': 'oTransitionEnd',
@@ -165,7 +165,7 @@
 		},
 		_initEvents : function() {
 
-			var self = this;
+			let self = this;
 
 			if ( this.options.nextEl !== '' ) {
 				$( this.options.nextEl ).on( 'click.bookblock touchstart.bookblock', function() { self._action( 'next' ); return false; } );
@@ -340,7 +340,7 @@
 		},
 		// adds the necessary sides (bb-page) to the layout 
 		_addSide : function( side, dir ) {
-			var $side;
+			let $side;
 
 			switch (side) {
 				case 'left':
@@ -409,7 +409,7 @@
 			return $side;
 		},
 		_startSlideshow : function() {
-			var self = this;
+			let self = this;
 			this.slideshow = setTimeout( function() {
 				self._navigate( 'next' );
 				if ( self.options.autoplay ) {
@@ -440,7 +440,7 @@
 				return false;
 			}
 
-			var dir;
+			let dir;
 			if( this.options.direction === 'ltr' ) {
 				dir = page > this.current ? 'next' : 'prev';
 			}
@@ -489,7 +489,7 @@
 		}
 	}
 
- 	var logError = function( message ) {
+	let logError = function( message ) {
 		if ( window.console ) {
 			window.console.error( message );
 		}
@@ -497,7 +497,7 @@
 
 	$.fn.bookblock = function( options ) {
 		if ( typeof options === 'string' ) {
-			var args = Array.prototype.slice.call( arguments, 1 );
+			let args = Array.prototype.slice.call( arguments, 1 );
 			this.each(function() {
 				var instance = $.data( this, 'bookblock' );
 				if ( !instance ) {
